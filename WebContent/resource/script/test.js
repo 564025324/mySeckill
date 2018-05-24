@@ -1,0 +1,1 @@
+alert('Enter test.js');
