@@ -18,6 +18,14 @@
 	<!-- 开启自动扫描带web注解的类 -->
 	<context:property-placeholder location="classpath:jdbc.properties" />
 
+	<bean id="testDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+	    <property name="url" value="jdbc:mysql://localhost:3306/seckill?characterEncoding=UTF-8">
+	    </property>
+	    <property name="username" value="root"></property>
+	    <property name="password" value="root"></property>
+	</bean>
+
 	<!-- 配置数据库连接池 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<!-- 配置数据库连接池 -->
@@ -35,7 +43,9 @@
 		<!-- 获取连接失败的充实次数 -->
 		<!-- <property name="acquireRetryAttempts" value="2"/> -->
 	</bean>
-
+	<bean id="ljwdao" class="com.lijwen.dao.ISeckillDaoImpl">
+		<property name="dataSource" ref="testDataSource"/>
+	</bean>
 	<!-- 配置sqlSessionFactory对象 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<!-- 注入连接池 -->
