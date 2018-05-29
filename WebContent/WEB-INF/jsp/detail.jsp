@@ -9,8 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>秒杀产品信息页</title>
 <%@ include file="common/head.jsp"%>
-
-<link rel="stylesheet" href="/mySeckill/resource/css/font.css" type="text/css"/>
 </head>
 
 <body>
@@ -20,9 +18,6 @@
 			<div class="panel-heading">
 				<h1>${seckill.name }</h1>
 			</div>
-			<div class="personFontStyleColorRed"><h2>测试css</h2></div>
-			<div class=""><h2>测试css2</h2></div>
-			
 			<div class="panel-body">
 				<h2 class="text-danger">
 					<!-- 显示time图标 -->
@@ -76,6 +71,7 @@
 <!-- jQuery countDown 倒计时插件 -->
 <script
 	src="https://cdn.bootcss.com/jquery.countdown/2.1.0/jquery.countdown.min.js"></script>
+<!-- <script type="text/javascript" src="/resource/script/test.js"></script> -->
 <script src="/mySeckill/resource/script/seckill.js"
 	type="text/javascript"></script>
 <!-- 开始编写交互逻辑 -->
