@@ -1,0 +1,3 @@
+
+	根据这项目写的基于SpringBoot+Mybatis+Thymeleaf的秒杀，能成功运行，欢迎大家参考
+	https://github.com/js3560750/mySecondKill
