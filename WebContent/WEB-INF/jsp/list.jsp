@@ -36,7 +36,7 @@
 							<td><fmt:formatDate value="${sk.starttime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 							<td><fmt:formatDate value="${sk.endtime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 								<%--<td><fmt:formatDate value="${sk.createtime}" pattern="yyyy-MM-dd HH:mm:ss" /></td> --%>
-							<td><a class="btn btn-info" href="/seckill/seckill/${sk.seckillId}/detail" target="_blank">link</a>
+							<td><a class="btn btn-info" href="/mySeckill/seckill/${sk.seckillId}/detail" target="_blank">link</a>
 							</td>
 						</tr>
 					</c:forEach>

@@ -9,7 +9,7 @@
 <body>
 	hello world!
 
-	<form action="/seckill/seckill/list" method="get">
+	<form action="/mySeckill/seckill/list" method="get">
 		<input type="submit" value="跳转至欢迎页面" />
 	</form>
 </body>

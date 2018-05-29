@@ -41,5 +41,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/quartz-2.2.3.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-context-support-4.1.7.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/sqljdbc.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-dbcp2-2.3.0.jar" sourcepath="C:/Users/Administrator/.m2/repository/org/apache/commons/commons-dbcp2/2.3.0/commons-dbcp2-2.3.0-sources.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-pool2-2.5.0.jar" sourcepath="C:/Users/Administrator/.m2/repository/org/apache/commons/commons-pool2/2.5.0/commons-pool2-2.5.0-sources.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
