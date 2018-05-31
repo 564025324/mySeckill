@@ -11,6 +11,17 @@ public class SuccessKilled {
 	private short stat;
 	
 	private Date createtime;
+	
+	private Seckill seckill;
+
+	
+	public Seckill getSeckill() {
+		return seckill;
+	}
+
+	public void setSeckill(Seckill seckill) {
+		this.seckill = seckill;
+	}
 
 	public long getSeckillId() {
 		return seckillId;
