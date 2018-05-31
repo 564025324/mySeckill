@@ -4,10 +4,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lijwen.dao.SuccessKilledMapper">
 	<update id="insertSuccessKilled">
-		insert into
-		success_killed(seckill_id,user_phone,state)
-		values (
-		#{seckillId},#{userPhone},0)
+		insert into success_killed(seckill_id,user_phone,state)
+		values (  #{seckillId},#{userPhone},0 )
 	</update>
 
 	<select id="queryByIdWithSeckill" resultType="SuccessKilled">
@@ -17,7 +15,7 @@
 		sk.seckill_id,
 		sk.user_phone,
 		sk.create_time,
-		s.state,
+		sk.state,
 		s.seckill_id
 		"seckill.seckill_id",
 		s.name "seckill.name",
@@ -26,12 +24,8 @@
 		s.end_time "seckill.end_time",
 		s.create_time "seckill.create_time"
 		from success_killed sk
-		inner join
-		seckill s on
-		sk.seckill_id = s.seckill_id
-		where sk.seckill_id =
-		#{seckillId} and
-		sk.user_phone = #{userPhone}
+		inner join seckill s on sk.seckill_id = s.seckill_id
+		where sk.seckill_id = #{seckillId} and sk.user_phone = #{userPhone}
 	</select>
 
 </mapper>
