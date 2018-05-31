@@ -21,16 +21,15 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-	    <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-	    <property name="url" value="jdbc:mysql://localhost:3306/seckill?characterEncoding=UTF-8">
-	    </property>
-	    <property name="username" value="root"></property>
-	    <property name="password" value="root"></property>
+	<bean id="dataSource2" class="org.apache.commons.dbcp2.BasicDataSource">
+	    <property name="driverClassName" value="${jdbc.driver}"/>
+	    <property name="url" value="${jdbc.url}"/>
+	    <property name="username" value="${jdbc.username}"/>
+	    <property name="password" value="${jdbc.password}"/>
 	</bean>
 	
 	<!-- 配置数据库连接池 -->
-	<bean id="dataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<!-- 配置数据库连接池 -->
 		<property name="driverClass" value="${jdbc.driver}" />
 		<property name="jdbcUrl" value="${jdbc.url}" />
