@@ -3,8 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="testQuartzService"
-		class="com.lijwen.service.TestQuartzService" />
+	<bean id="testQuartzService" class="com.lijwen.service.TestQuartzService" />
 
 	<bean id="printHello"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -26,14 +25,15 @@
 		<property name="triggers">
 			<list>
 				<!-- 每10秒执行一次打印的方法 -->
-				<!-- <ref bean="execPrintTrigger" />  -->
+				<ref bean="execPrintTrigger" />
 			</list>
 		</property>
 		<!-- 必须设置 QuartzScheduler 延时启动，应用启动完成后，QuartzSecduler再启动 -->
 		<property name="startupDelay" value="10" />
 	</bean>
 
-	<bean id="executor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+	<bean id="executor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
 		<property name="corePoolSize" value="3" />
 		<property name="maxPoolSize" value="5" />
 		<property name="queueCapacity" value="10" />
