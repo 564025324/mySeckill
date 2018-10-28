@@ -26,23 +26,23 @@ public class JDBCHelper {
 	private static Connection spilderconn = null;
 
 	public static void main(String[] args) {
-		try {
-			Class.forName(driver);
-			spilderconn = DriverManager.getConnection(DBurl, user, password);
-
-			String sql = "select * from seckill ;";
-			pstm = spilderconn.prepareStatement(sql);
-
-			System.out.println("数据库连接成功");
-
-			// for (Urldb url : selectUrldbByUrl("")) {
-			// System.out.println(url.getUrl());
-			// }
-
-			// insertPicturebUrl("123333333333");
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
+		// try {
+		// Class.forName(driver);
+		// spilderconn = DriverManager.getConnection(DBurl, user, password);
+		//
+		// String sql = "select * from seckill ;";
+		// pstm = spilderconn.prepareStatement(sql);
+		//
+		// System.out.println("数据库连接成功");
+		//
+		// // for (Urldb url : selectUrldbByUrl("")) {
+		// // System.out.println(url.getUrl());
+		// // }
+		//
+		// // insertPicturebUrl("123333333333");
+		// } catch (ClassNotFoundException | SQLException e) {
+		// e.printStackTrace();
+		// }
 	}
 
 	public static Connection getConnection() throws SQLException {
