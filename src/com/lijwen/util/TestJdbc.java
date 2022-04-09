@@ -9,7 +9,6 @@ import org.springframework.core.io.ClassPathResource;
 import com.lijwen.dao.ISeckillDao;
 import com.lijwen.entity.Seckill;
 
-@SuppressWarnings("deprecation")
 public class TestJdbc {
 	public static void main(String[] args) {
 		XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("spring/spring-dao.xml"));
