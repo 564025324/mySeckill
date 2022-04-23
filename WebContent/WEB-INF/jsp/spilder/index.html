@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello spilder program</title>
+</head>
+<body>
+<!-- Path: WebContent/WEB-INF/jsp/spilder/index.html -->
+<h1>hello spilder program</h1>
+<!-- 写一个table  和 ajax实现后台DB每秒刷新一次 -->
+<table border="1">
+    <tr>
+        <th>id</th>
+        <th>url</th>
+        <th>url_type</th>
+        <th>analysised</th>
+        <th>create_time</th>
+        <th>ShowDetail</th>
+    </tr>
+    <?php
+        $conn = mysqli_connect("localhost", "root", "12345678", "spilder");
+        $sql = "select * from urldb";
+        $result = mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_assoc($result)){
+            echo "<tr>";
+                echo "<td>{$row['id']}</td>";
+                echo "<td>{$row['url']}</td>";
+                echo "<td>{$row['url_type']}</td>";
+                echo "<td>{$row['analysised']}</td>";
+                echo "<td>{$row['create_time']}</td>";
+                echo "<td><a href="detail.php?id={$row['id']}"></a></td>";
+            echo "</tr>";
+        }
+    ?>
+</table>
+</body>
+</html>

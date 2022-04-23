@@ -1,9 +1,11 @@
-package com.lijwen.dao;
+package com.demo.dao;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.lijwen.entity.SuccessKilled;
+import com.demo.entity.SuccessKilled;
 
+@Mapper
 public interface SuccessKilledMapper {
 
 	/**

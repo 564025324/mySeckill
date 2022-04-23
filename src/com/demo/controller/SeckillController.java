@@ -2,7 +2,7 @@
  * @author Lijingwen
  *
  */
-package com.lijwen.controller;
+package com.demo.controller;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.lijwen.entity.Seckill;
-import com.lijwen.service.SeckillService;
+import com.demo.entity.Seckill;
+import com.demo.service.SeckillService;
 
 @Controller // @Service @Component
 @RequestMapping("/seckill")

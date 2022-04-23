@@ -2,7 +2,7 @@
  * @author Lijingwen
  *
  */
-package com.lijwen.service.impl;
+package com.demo.service.impl;
 
 import java.util.List;
 
@@ -11,11 +11,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lijwen.dao.SeckillMapper;
-import com.lijwen.dao.SuccessKilledMapper;
-import com.lijwen.entity.Seckill;
-import com.lijwen.entity.SuccessKilled;
-import com.lijwen.service.SeckillService;
+import com.demo.dao.SeckillMapper;
+import com.demo.dao.SuccessKilledMapper;
+import com.demo.entity.Seckill;
+import com.demo.service.SeckillService;
 
 @Service("seckillService")
 public class SeckillServiceImp implements SeckillService {

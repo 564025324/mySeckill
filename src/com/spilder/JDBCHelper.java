@@ -2,6 +2,7 @@ package com.spilder;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,22 +49,31 @@ public class JDBCHelper {
         return spilderconn;
     }
 
-    // 从DB中获取所有的所需资源的URL
+    // 获取未被解析的所有网页List
     public static List<Urldb> selectUrldbByUrl(String url) throws SQLException {
+        System.out.println("当前时间：" + new Date() + "   检索数据库网页地址开始");
+
         List<Urldb> list = new ArrayList<Urldb>();
         try {
-            String sql = "select * from spilder.urldb";
+            // sql语句：查询未被解析的网页
+            String sql = "select * from spilder.urldb where 1=1 and analysised=0 ";
+            // 如果url为空，就查询所有的网页
             if (!"".equals(url)) {
-                sql = sql + " where url = '" + url + "'";
+                sql = sql + " and url = '" + url + ";";
             }
             spilderconn = getConnection();
             pstm = spilderconn.prepareStatement(sql);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
-                Urldb urlinfo = new Urldb();
-                urlinfo.setUrl(rs.getString(2));
-                list.add(urlinfo);
+                list.add(
+                        new Urldb(
+                                Integer.valueOf(rs.getString(1)),
+                                rs.getString(2),
+                                rs.getString(3),
+                                Integer.valueOf(rs.getString(4))
+                        ));
             }
+            System.out.println("当前时间：" + new Date() + "   检索数据库网页地址结束");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("数据库查询异常");
@@ -74,13 +84,13 @@ public class JDBCHelper {
         return list;
     }
 
-    public static List<String> selectPicurlByUrl(String url) throws SQLException {
-        List<String> list = new ArrayList<String>();
+    public static List<Urldb> selectPicurlByUrl(String url) throws SQLException {
+        List<Urldb> urldbList = new ArrayList<Urldb>();
         try {
 
             String sql = "select * from url_pic ";
             if (!"".equals(url)) {
-                sql = sql + " where url = '" + url + "'";
+                sql = sql + " where url = '" + url + "' and downloadend = 0";
             }
             spilderconn = getConnection();
             pstm = spilderconn.prepareStatement(sql);
@@ -88,11 +98,11 @@ public class JDBCHelper {
 
             // 如果查询结果为空，就将“http://www.mmonly.cc/mmtp/”作为list的第一个元素
             if (!rs.next()) {
-                list.add("http://www.mmonly.cc/mmtp/");
+                urldbList.add(new Urldb(0, "http://www.mmonly.cc/mmtp/", "1"));
             }
 
             while (rs.next()) {
-                list.add(rs.getString(2));
+                urldbList.add(new Urldb(Integer.valueOf(rs.getString(1)), rs.getString(2), rs.getString(3)));
             }
 
         } catch (Exception e) {
@@ -102,22 +112,42 @@ public class JDBCHelper {
             spilderconn.close();
             pstm.close();
         }
-        return list;
+        return urldbList;
     }
 
-    public static boolean existPicUrlByUrl(String url) throws SQLException {
+    /**
+     * 验证数据库表中是否已经存在该URL
+     *
+     * @param url
+     * @param urlType 1:weburl ; 2:picurl
+     * @return
+     * @throws SQLException
+     */
+    public static boolean existUrlByUrl(String url, int urlType) throws SQLException {
         try {
-            String sql = "select * from url_pic ";
-            if (!"".equals(url)) {
-                sql = sql + " where url = '" + url + "'";
+            if ("".equals(url)) return false;
+
+            // 根据urlType判断查询的表
+            String sql = null;
+            switch (urlType) {
+                case 1:
+                    sql = "select * from spilder.urldb where url = '" + url + "'";
+                    break;
+                case 2:
+                    sql = "select * from spilder.url_pic where url = '" + url + "'";
+                    break;
             }
             spilderconn = getConnection();
             pstm = spilderconn.prepareStatement(sql);
-            if (pstm.executeQuery(sql).getRow() > 0)
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) {
                 return true;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("数据库查询异常");
+            return false;
         } finally {
             spilderconn.close();
             pstm.close();
@@ -130,6 +160,35 @@ public class JDBCHelper {
             spilderconn = getConnection();
 
             String sql = "insert into url_pic(url) values ('" + picurl + "');";
+            pstm = spilderconn.prepareStatement(sql);
+            pstm.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            spilderconn.close();
+            pstm.close();
+        }
+    }
+
+
+    public static void updateUrlDb(String url) throws SQLException {
+        try {
+            spilderconn = getConnection();
+            String sql = "update spilder.urldb set analysised=1 where url = '" + url + "'";
+            pstm = spilderconn.prepareStatement(sql);
+            pstm.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            spilderconn.close();
+            pstm.close();
+        }
+    }
+
+    public static void updatePicUrl(String url) throws SQLException {
+        try {
+            spilderconn = getConnection();
+            String sql = "update spilder.url_pic set downloaded=1 where url = '" + url + "'";
             pstm = spilderconn.prepareStatement(sql);
             pstm.executeUpdate();
         } catch (Exception e) {

@@ -9,8 +9,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.ljwen</groupId>
-    <artifactId>mySeckill</artifactId>
+    <groupId>com.demo</groupId>
+    <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <description>personal java project</description>
     <properties>
@@ -80,6 +80,21 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <!--            <version>5.3.3</version>-->
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>2.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>RELEASE</version>
         </dependency>
     </dependencies>
 

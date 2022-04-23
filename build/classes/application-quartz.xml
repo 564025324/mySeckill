@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="testQuartzService"
-		class="com.lijwen.service.TestQuartzService" />
+		class="com.demo.service.TestQuartzService" />
 
 	<bean id="printHello"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">

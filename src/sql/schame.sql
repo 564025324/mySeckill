@@ -1,5 +1,4 @@
-a-- 数据库脚本初始化
-
+-- 数据库脚本初始化
 
 -- 创建数据库
 -- create database seckill CHARSET utf8;

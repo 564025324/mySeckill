@@ -17,7 +17,7 @@
 	<!-- 开启自动扫描带web注解的类 -->
 	<context:property-placeholder location="classpath:jdbc.properties" />
 
-	<bean id="ljwdao" class="com.lijwen.dao.ISeckillDaoImpl">
+	<bean id="ljwdao" class="com.demo.dao.ISeckillDaoImpl">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
@@ -53,7 +53,7 @@
 		<!-- 配置mybatis全局配置文件 -->
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<!-- 配置实体类包，自动扫描，用于别名配置 -->
-		<property name="typeAliasesPackage" value="com.lijwen.entity" />
+		<property name="typeAliasesPackage" value="com.demo.entity" />
 		<!-- 配置需要扫描的mapper.xml -->
 		<property name="mapperLocations" value="classpath:com/lijwen/mapping/*.xml"></property>
 	</bean>
@@ -63,7 +63,7 @@
 		<!-- 注入sqlSessionFactory -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 		<!-- 给出需要扫描的mapper接口 -->
-		<property name="basePackage" value="com.lijwen.dao" />
+		<property name="basePackage" value="com.demo.dao" />
 
 	</bean>
 

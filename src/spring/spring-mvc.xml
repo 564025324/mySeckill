@@ -9,7 +9,7 @@
 
 
 	<!-- 开启自动扫描带web注解的类 -->
-	<context:component-scan base-package="com.lijwen.controller"/>
+	<context:component-scan base-package="com.demo.controller"/>
 <!-- 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" /> -->
 <!-- 	</context:component-scan> -->
 	

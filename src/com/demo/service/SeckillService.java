@@ -1,12 +1,12 @@
 /**
  * @author Lijingwen
- *
  */
-package com.lijwen.service;
+package com.demo.service;
+
+import com.demo.entity.Seckill;
 
 import java.util.List;
 
-import com.lijwen.entity.Seckill;
 
 public interface SeckillService {
 	/**

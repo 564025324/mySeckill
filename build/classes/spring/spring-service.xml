@@ -10,7 +10,7 @@
 
 	<!-- 扫描service包下的所有使用注解的类型 -->
 	<context:component-scan
-		base-package="com.lijwen.service" />
+		base-package="com.demo.service" />
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

@@ -9,16 +9,24 @@ import java.net.URL;
  */
 public class SpilderDownload {
 
+    // 将下面的方法改成每次上次调用结束后才能开始下一个下载
+    // 如果每次调用都要开始下一个下载，那么下载速度会很慢
+    public SpilderDownload(String url, String filepath) {
+        downloadByFileUrl(url, filepath);
+    }
+
+    // 将下面的方法改成每次上次调用结束后才能开始下一个下载
     public static void downloadByFileUrl(String url_str, String filepath) {
         File dir2 = new File(filepath);
-        if (!dir2.exists())
+        if (!dir2.exists()) {
             dir2.mkdirs();
+            System.out.println(dir2 + ":创建成功");
+        }
 
-        System.out.println(dir2 + ":创建成功");
         try {
             File file = new File(dir2, (getMaxFileName(filepath) + 1) + ".jpg");
             if (file.exists()) {
-                System.out.println(file + "已存在");
+                System.out.println("文件" + file + "已存在");
             }
             URL url = new URL(url_str);
             BufferedInputStream biStream = new BufferedInputStream(url.openStream());
@@ -31,6 +39,7 @@ public class SpilderDownload {
             while ((len = biStream.read(buf)) != -1) {
                 boStream.write(buf, 0, len);
             }
+            // 关闭流
             boStream.close();
             biStream.close();
             System.out.println("完成下载" + file.getName());
@@ -71,14 +80,10 @@ public class SpilderDownload {
         return max;
     }
 
+
     public static void main(String[] args) throws IOException {
-
-        String url_str = "https://t1.huishahe.com/uploads/tu/202204/40/006S6bqkly1h0zzw3e2fpj30qo0g7dhd.jpg";
-        // 声明一个filepath字符串变量，该变量赋值[mac电脑的“下载”目录地址]
-        String filepath = "//Users//lijingwen//Downloads//picTest//";
-
-        downloadByFileUrl(url_str, filepath);
-        // System.out.println(getMaxFileName(filepath));
+        // 测试下载效果
+        downloadByFileUrl("https://t1.huishahe.com/uploads/tu/202204/40/006S6bqkly1h0zzw3e2fpj30qo0g7dhd.jpg", "//Users//lijingwen//Downloads//picTest//");
 
     }
 }
